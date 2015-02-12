@@ -1,0 +1,38 @@
+#!/bin/sh
+#dotfw - dash shell open testing framework - http://safrm.net/projects/dotfw
+#author: Miroslav Safr <miroslav.safr@gmail.com>
+VERSION=NA
+VERSION_DATE=NA
+
+#options
+#EXIT_ON_ERROR=1
+#VALGRIND=1
+
+die() { echo "\033[01;31mERROR: $*\033[00m\n" ; exit 1 ; }
+testlog() { echo "\033[33mTC$TCID:\033[00m\033[34m$TCNAME:\033[00m\033[36m$*\033[00m" ; }
+commadExists() { type $1 >/dev/null 2>&1 ; }
+#endapp() { echo "user defiend proper exit" ; }
+killapps() { commadExists endapp && endapp ; killall "$APP" > /dev/null 2> /dev/null ; }
+testfail() { ERRORS=$(($ERRORS + 1)) ; echo "\033[33mTC$TCID:\033[00m\033[34m$TCNAME failed ($ERRORS):\033[00m\033[31m$*\033[00m"; if [ -n "$EXIT_ON_ERROR" ] ; then killapps ; exit ${TCID:-1} ; fi }
+testok() { OK=$(($OK + 1)) ; testlog "OK" ; }
+testnok() { NOK=$(($NOK + 1)) ; NOK_TCS="$NOK_TCS $TCNAME," ; testlog "NOK" ; }
+teststart() { TCID=$(($TCID + 1)) ; TCNAME="$1" ; testlog "START" ; ERR_PREV=$ERRORS ; }
+testend() { killapps ; [ $ERR_PREV -lt $ERRORS ] && testnok || testok ; }
+summary() { ELAPSED_TIME=$((`date +'%s'` - $START_TIME)) ; echo "TCS:$TCID OK: $OK NOK:$NOK ERRORS:$ERRORS TOOK:$(($ELAPSED_TIME/60)) min $(($ELAPSED_TIME%60))s" ; [ -n "$NOK_TCS" ] && echo "NOK_TCS: $NOK_TCS" ; }
+doCleanup() { PIDS=`pgrep -f $APP` ; [ -n "$PIDS" ] && kill $PIDS ; [ -n "$VALGRIND" ] && PIDS=`pgrep valgrind` ; [ -n "$VALGRIND" ] && [ -n "$PIDS" ] && kill $PIDS ; }
+updPortsCount() { return `netstat -lnpu 2>/dev/null | grep $APPNAME | wc -l` ; }
+tcpPortsCount() { return `netstat -lnpt 2>/dev/null | grep $APPNAME | wc -l` ; }
+appProcessCount() { return `ps -AF | grep "$APPNAME " 2>/dev/null | wc -l` ; }
+pause() { while true; do KEY=$(bash -c 'read -p "Paused - press any key to continue ... " -n 1 ans ; ') break; done }
+
+SUITE_RUN=${SUITE_RUN:-0}
+TCID=${TCID:-0}
+NOK=${NOK:-0}
+ERRORS=${ERRORS:-0}
+START_TIME=`date +'%s'`
+
+[ -f ${APP:?tested application has to be defined} ] || die "tested application has to be defiend and exist"
+[ -n "$VALGRIND" ] && APP="valgrind --leak-check=full $APP"
+APPNAME=`basename $APP`
+
+

@@ -1,0 +1,4 @@
+- [ ] appProcessCount suport for scripts/apps with full/relative path 
+- [ ] ask function
+- [ ] examples/2-using-valgrind.sh
+- [ ] gdb switches

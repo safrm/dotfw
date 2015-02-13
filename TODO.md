@@ -2,3 +2,4 @@
 - [ ] ask function
 - [ ] examples/2-using-valgrind.sh
 - [ ] gdb switches
+- [ ] packaging

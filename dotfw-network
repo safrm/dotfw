@@ -1,0 +1,13 @@
+#!/bin/sh
+#dotfw - dash shell open testing framework - http://safrm.net/projects/dotfw
+#author: Miroslav Safr <miroslav.safr@gmail.com>
+#network helpers enabled from dotfw by sourcing when DOTFW_NETWORK=1
+
+updPortsCount() { return `netstat -lnpu 2>/dev/null | grep $APPNAME | wc -l` ; }
+tcpPortsCount() { return `netstat -lnpt 2>/dev/null | grep $APPNAME | wc -l` ; }
+isPortOpen() { nc $* < /dev/null >/dev/null 2>&1 ; }
+scanopenports () {  if [ $# -eq 0 ]; then HOST=localhost; fi ; nmap -PN $HOST $* ; }
+
+myip () { ifconfig|grep Bcast|awk ' { print $2 }'|awk -F":" ' { print $2 }' ; }
+myipwithuser () { echo "`whoami;`@`ifconfig|grep Bcast|awk ' { print $2 }'|awk -F":" ' { print $2 }';`" ; }
+

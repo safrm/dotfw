@@ -6,6 +6,11 @@ Light weight collection of testing functions to run various tests for rapid proj
     sudo make install
 
 #usage  
+#modules
+    /usr/bin/dotfw ............. core module
+    /usr/bin/dotfw-network ..... network specific functions (enabled by DOTFW_NETWORK=1)
+    /usr/bin/dotfw-process ..... proceses related functions (enabled by DOTFW_PROCESS=1)
+
 ##examples/1-first-test.sh
     #choose app to test 
     APP=/usr/bin/xeyes
@@ -48,6 +53,9 @@ Light weight collection of testing functions to run various tests for rapid proj
 
 ##examples/2-using-valgrind.sh
 
+
+##examples/3-port-scanning.sh
+usage of network helpers enabled by DOTFW_NETWORK=1 to scan open ports etc
 
 
 

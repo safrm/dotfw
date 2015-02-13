@@ -1,0 +1,12 @@
+#!/bin/sh
+#dotfw - dash shell open testing framework - http://safrm.net/projects/dotfw
+#author: Miroslav Safr <miroslav.safr@gmail.com>
+#processes helpers enabled from dotfw by sourcing when DOTFW_PROCESS=1
+
+appProcessCount() { return `ps -AF | grep "$APPNAME " 2>/dev/null | wc -l` ; }
+memorydetailsof() { cat /proc/`pidof $1`/status | grep -E "(VmPeak|VmSize)" ; }
+memoryof() { pmap -x `pidof $1` | headtail 2 ; }
+neloop () { while (true); do $*; done }
+threadcount() { cat /proc/`pidof $1`/status | grep Threads ; }
+threadshow() { ps -Lf -p`pidof $1` ; }
+

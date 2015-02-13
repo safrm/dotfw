@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<refentry id="dotfw.1">
+
+<refentryinfo>
+    <title>Dash open testing framework</title>
+    <author>
+        <personname><firstname>Miroslav</firstname><surname>Safr</surname></personname>
+        <email>miroslav.safr@gmail.com</email>
+        <personblurb><para>Author and maintainer</para></personblurb>
+    </author>
+    <date>2015-02-03</date>
+    <productnumber>NA</productnumber>
+    <productname>dotfw</productname>
+</refentryinfo>
+
+<refmeta>
+    <refentrytitle>dotfw</refentrytitle>
+	<manvolnum>1</manvolnum>
+</refmeta>
+
+
+<refnamediv>
+    <refname>dotfw</refname>
+    <refpurpose>
+	Dash open testing framework  - Light weight collection of testing functions to run various tests for rapid projects.
+    </refpurpose>
+</refnamediv>
+<refsect1><title>dotfw modules</title>
+    <para>
+    <screen format="linespecific">
+    /usr/bin/dotfw ............. core module
+    /usr/bin/dotfw-network ..... network specific functions (enabled by DOTFW_NETWORK=1)
+    /usr/bin/dotfw-process ..... proceses related functions (enabled by DOTFW_PROCESS=1)
+     </screen>
+    </para>
+  </refsect1>
+
+
+  <refsect1><title>SEE ALSO</title>
+    <para>
+       jenkins-support-scripts(1). 
+       <ulink url="http://safrm.net/projects/dotfw/"/>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>AUTHOR</title>
+    <para>
+        Miroslav Šafr &lt;miroslav.safr@gmail.com&gt;
+    </para>
+  </refsect1>
+  <refsect1>
+  <title>LICENSE</title>
+      <para>
+       LGPL2
+    </para>       
+  </refsect1>
+</refentry>

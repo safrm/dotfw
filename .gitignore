@@ -1,0 +1,9 @@
+rpm/*
+debian/files
+debian/changelog
+debian/dofw.debhelper.log
+debian/dofw.substvars
+debian/dofw/
+*.changes
+*~
+doc/tmp/*

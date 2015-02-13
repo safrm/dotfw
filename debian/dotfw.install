@@ -1,0 +1,4 @@
+dotfw usr/bin/
+dotfw-network usr/bin/
+dotfw-process usr/bin/
+doc/manpages/dotfw.1  usr/share/man/man1

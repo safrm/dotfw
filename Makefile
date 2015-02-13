@@ -1,16 +1,18 @@
 MARKDOWN = markdown
 MDDOCS   = $(wildcard *.md)
-HTMLDOCS = $(MDDOCS:%.md=docs/%.html)
+HTMLDOCS = $(MDDOCS:%.md=doc/htmlpages/%.html)
 
-docs/%.html: %.md
+doc/htmlpages/%.html: %.md
 	$(MARKDOWN) $< > $@ || rm -f $@
 
 all: $(HTMLDOCS)
+	 [ -a jss-docs-update ]; then jss-docs-update ./doc ; fi
 
 install:
-	install -m 755 dotfw /usr/bin
-	install -m 755 dotfw-network /usr/bin
-	install -m 755 dotfw-process /usr/bin
+	mkdir -p $(DESTDIR)/usr/bin
+	install -m 755 dotfw $(DESTDIR)/usr/bin
+	install -m 755 dotfw-network $(DESTDIR)/usr/bin
+	install -m 755 dotfw-process $(DESTDIR)/usr/bin
 
 clean:
 	rm -fr $(HTMLDOCS)

@@ -12,8 +12,8 @@ VERSION_DATE=NA
 die() { echo "\033[01;31mERROR: $*\033[00m\n" ; exit 1 ; }
 testlog() { echo "\033[33mTC$TCID:\033[00m\033[34m$TCNAME:\033[00m\033[36m$*\033[00m" ; }
 commadExists() { type $1 >/dev/null 2>&1 ; }
-#endapp() { echo "user defiend proper exit" ; }
-killapps() { commadExists endapp && endapp ; killall "$APP" > /dev/null 2> /dev/null ; }
+#endapp() { echo "user defiend proper exit" ; }
+killapps() { commadExists endapp && endapp ; killall "$APP" > /dev/null 2> /dev/null ; }
 testfail() { ERRORS=$(($ERRORS + 1)) ; echo "\033[33mTC$TCID:\033[00m\033[34m$TCNAME failed ($ERRORS):\033[00m\033[31m$*\033[00m" ; if [ -n "$EXIT_ON_ERROR" ]; then killapps ; exit ${TCID:-1} ; fi }
 testok() { OK=$(($OK + 1)) ; testlog "OK" ; }
 testnok() { NOK=$(($NOK + 1)) ; NOK_TCS="$NOK_TCS $TCNAME," ; testlog "NOK" ; }
@@ -26,7 +26,6 @@ pause() { while true; do KEY=$(bash -c 'read -p "Paused - press any key to conti
 [ -n "$DOTFW_NETWORK" ] && . /usr/bin/dotfw-network
 [ -n "$DOTFW_PROCESS" ] && . /usr/bin/dotfw-process
 
-SUITE_RUN=${SUITE_RUN:-0}
 TCID=${TCID:-0}
 NOK=${NOK:-0}
 ERRORS=${ERRORS:-0}

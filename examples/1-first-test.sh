@@ -1,4 +1,7 @@
 #!/bin/sh
+#dotfw - dash shell open testing framework - http://safrm.net/projects/dotfw
+#author: Miroslav Safr <miroslav.safr@gmail.com>
+# helloworld example with process realated functions
 
 APP=/usr/bin/xeyes
 DOTFW_PROCESS=1

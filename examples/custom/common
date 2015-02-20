@@ -1,0 +1,15 @@
+#dotfw - dash shell open testing framework - http://safrm.net/projects/dotfw
+#author: Miroslav Safr <miroslav.safr@gmail.com>
+#custom oveloading environment definitions
+
+#supports server/client processes
+APP="/usr/bin/xeyes"
+MXC="/usr/bin/xeyes"
+
+endapp() { echo ">>>> execute server teardown" ; }
+doCleanUp() { echo ">>>> clean environemt" ; }
+
+DOTFW_PROCESS=1
+DOTFW_NETWORK=1
+[ -z "$TCID" ] && . /usr/bin/dotfw
+

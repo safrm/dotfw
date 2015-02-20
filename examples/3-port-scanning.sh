@@ -1,4 +1,6 @@
 #!/bin/sh
+#dotfw - dash shell open testing framework - http://safrm.net/projects/dotfw
+#author: Miroslav Safr <miroslav.safr@gmail.com>
 #example to test ports
 
 APP=/usr/sbin/sshd

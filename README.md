@@ -58,4 +58,8 @@ Light weight collection of testing functions to run various tests for rapid proj
 usage of network helpers enabled by DOTFW_NETWORK=1 to scan open ports etc
 
 
+##examples/custom
+custom overloaded environemnt with own exteneded functions + client/server usecase
+
+
 
